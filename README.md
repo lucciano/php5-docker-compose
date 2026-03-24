@@ -8,6 +8,24 @@ A PHP 5.6 demo app running behind nginx with OWASP ModSecurity WAF.
 |---------|-------|------|
 | PHP-FPM | `php:5.6-fpm` | internal (9000) |
 | Nginx + WAF | `owasp/modsecurity-crs:nginx-alpine` | `5081` → `8080` |
+| MySQL | `mysql:5.7` | `3306` |
+
+## MySQL
+
+| Setting | Value |
+|---------|-------|
+| Host (from PHP) | `mysql` |
+| Port | `3306` |
+| Root password | `root` |
+| Database | `app` |
+| User | `app` |
+| Password | `app` |
+
+Data is persisted in a named Docker volume (`mysql_data`). To reset it:
+
+```bash
+docker compose down -v
+```
 
 ## WAF — OWASP ModSecurity CRS
 
