@@ -1,0 +1,23 @@
+services:
+  php:
+    image: php:5.6-fpm
+    volumes:
+      - ./www:/var/www/html
+
+  nginx_php:
+    build: ./docker/nginx
+    ports:
+      - "5081:8080"
+    volumes:
+      - ./www:/var/www/html
+    environment:
+      - MODSEC_RULE_ENGINE=On
+    depends_on:
+      - php
+    networks:
+      - default
+      - hmlb-net
+
+networks:
+  hmlb-net: 
+    external: true
