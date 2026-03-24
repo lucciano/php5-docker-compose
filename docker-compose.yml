@@ -1,6 +1,6 @@
 services:
   php:
-    image: php:5.6-fpm
+    build: ./docker/php
     volumes:
       - ./www:/var/www/html
     depends_on:
